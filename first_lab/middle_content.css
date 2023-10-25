@@ -1,8 +1,8 @@
 .rectangle {
-    margin: 10% 13% 0 13%;
+    margin: 10% 0 0 15%;
     display: flex;
-    width: 1117px;
-    height: 560px;
+    width: 70%;
+    /* height: 40%x; */
     flex-shrink: 0;
     align-content: center;
 
@@ -15,7 +15,7 @@
     border-radius: 50px;
     width: 477px;
     height: 504px;
-    background-image: url(fass.png);
+    background-image: url(scatches/fass.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -54,4 +54,79 @@
     font-weight: 500;
     line-height: 160%;
     /* 28.8px */
+}
+
+@media (max-width: 500px) {
+    .rectangle {
+        margin-top: 5%;
+        margin-left: 3.5%;
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        height: 100%;
+        flex-shrink: 0;
+        align-content: center;
+        justify-content: space-between;
+        border-radius: 50px;
+        background: rgba(240, 99, 184, 0.15);
+    }
+
+    .mid_background_image {
+        border-radius: 50px;
+        width: 320px;
+        height: 120px;
+        background-image: url(scatches/fass.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        left: -10px;
+    }
+
+    .header_text {
+        padding-bottom: 5%;
+        display: flex;
+        width: 280px;
+        height: 250px;
+        flex-direction: column;
+        flex-shrink: 0;
+        color: #212353;
+    
+        /* SubHeadline */
+        font-family: Helvetica;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        margin: auto;
+    }
+
+    .under_header_text {
+        width: 280px;
+        height: 130px;
+        flex-shrink: 0;
+        color: var(--1, #4B5D68);
+        font-family: Avenir;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%;
+        margin-bottom: 10%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .rectangle {
+        margin-left: 15%;
+        transform: scale(1.3);
+    }
+
+    .header_text {
+        margin-top: 5%;
+        transform: scale(1.3);
+    }
+
+   .mid_background_image {
+    margin-top: -2%;
+    transform: scale(1.1);
+   }
 }
