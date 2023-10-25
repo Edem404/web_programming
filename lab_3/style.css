@@ -1,0 +1,141 @@
+li {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navigation {
+    background-color: rgba(128, 128, 128, 0.405);
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: flex;
+}
+
+.first_nav_ul {
+    display: flex;
+}
+
+.form_in_nav {
+    margin-left: 700px;
+    display: flex;
+}
+
+.form_button {
+    margin-left: 10px;
+}
+
+.a_in_first_ul {
+    margin-left: 20px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: azure;
+}
+
+.main_section {
+    display: flex;
+}
+
+.main_menu {
+    display: block;
+    padding-inline-start: 0;
+}
+
+.h1_in_main_menu {
+    margin-left: 40px;
+}
+
+.sort {
+    align-items: center;
+    display: flex;
+    margin-left: 20px;
+}
+
+.text_in_sort {
+    width: 130px;
+}
+
+.button_in_sort {
+    margin-left: 10px;
+    height: 40px;
+}
+
+.dividing_line {
+    width: 170px;
+    height: 2px;
+    flex-shrink: 0;
+    background: var(--3, rgba(51, 50, 50, 0.584));
+    border: 0.1px solid rgba(51, 50, 50, 0.584);
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.count {
+    margin-left: 20px;
+}
+
+.count_button {
+    color: white;
+    flex-shrink: 0;
+    margin-left: 60px;
+    margin-top: 0;
+    font-family: Avenir;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: #3070fa;
+    line-height: 200%;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.total_expenses {
+    display: flex;
+}
+
+.total_text {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.total_price {
+    font-family: Avenir;
+    font-weight: 500;
+}
+
+.content {
+    display: flex;
+}
+
+.horizontal_line {
+    margin-top: 10px;
+    width: 2px;
+    height: 1000px;
+    flex-shrink: 0;
+    background: var(--3, rgba(51, 50, 50, 0.584));
+    border: 0.1px solid rgba(51, 50, 50, 0.584);
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.content_ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 200px;
+    height: 300px;
+    background-color: black;
+    margin: 10px;
+}
