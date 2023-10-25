@@ -1,0 +1,70 @@
+.h1_style {
+    display: flex;
+    width: 645px;
+    height: 184px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: var(--2, #212353);
+    font-family: Helvetica;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+    /*88px */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 396px;
+    bottom: 30px;
+    margin: auto;
+}
+
+.text {
+    width: 330px;
+    height: 120px;
+    flex-shrink: 0;
+
+    color: var(--1, #4B5D68);
+    font-family: Avenir;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    position: absolute;
+    top: 50.7%;
+    left: -1.6%;
+    right: 46%;
+    bottom: 0px;
+    margin: auto;
+}
+
+.purple_button {
+    border-radius: 50px;
+    background-color: var(--3, #9C69E2);
+    width: 170px;
+    height: 60px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Avenir;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 300%;
+    /* 28.8px */
+    position: absolute;
+    top: 84%;
+    left: -1.6%;
+    right: 57%;
+    bottom: 0px;
+    margin: auto;
+}
+
+.background_image {
+    margin: 200px 0 0 565px;
+    width: 885px;
+    height: 468px;
+    background: url(Background.png  ), lightgray 50%/ cover no-repeat;
+}

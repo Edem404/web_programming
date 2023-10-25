@@ -1,0 +1,65 @@
+.top_ul_style {
+    list-style: none;
+    display: flex;
+}
+
+.top {
+    display: flex;
+}
+
+.logo {
+    width: 49px;
+    height: 35px;
+    margin-top: 67px;
+    margin-right: 121px;
+    margin-left: 15%;
+    padding-top: 15px;
+}
+
+.about {
+    color: var(--2, #212353);
+    margin: 67px 40px 20px 0;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 160%;
+}
+
+.top_buttons_test {
+    white-space: nowrap;
+    color: var(--1, #4B5D68);
+    margin: 67px 40px 20px 0;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+}
+
+.request_button {
+    color: var(--2, #212353);
+    margin-top: 67px;
+    margin-bottom: 20px;
+    margin-left: 378px;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 350%;
+    white-space: nowrap;
+
+    text-decoration: none;
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    background-color: #FFF;
+    box-shadow: 0px 5px 5px 0px rgba(75, 93, 104, 0.10);
+    border-radius: 50px; 
+    background-image: url(Group\ 56.png);
+    background-repeat: no-repeat;
+    background-size: 20px 12.35px;
+    background-position: calc(100% - 33px) center;
+    padding-left: 2%;
+    padding-right: -15%;
+ }

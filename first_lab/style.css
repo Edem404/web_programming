@@ -1,0 +1,18 @@
+@import url("header_style.css");
+@import url("headline_style.css");
+@import url("middle_content.css");
+@import url(cards_style.css);
+@import url(bottom_style.css);
+@import url(test.css);
+
+body {
+    background: linear-gradient(180deg, #F6FAFD 0%, #FFF 19.4%);
+}
+
+li {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
