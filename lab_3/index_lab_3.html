@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Third lab and next</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navigation">
         <ul class="first_nav_ul">
             <li><a href="" class="a_in_first_ul">Shop</a></li>
             <li><a href="" class="a_in_first_ul">Basket</a></li>
-            <li><a href="" class="a_in_first_ul">New order</a></li>
+            <li><a href="#" class="a_in_first_ul" id="newOrder">New order</a></li>
         </ul>
         <form action="" class="form_in_nav">
             <input type="text" placeholder="Searching..." id="searchingField">
@@ -25,7 +27,7 @@
             <h1 class="h1_in_main_menu">Manage desks</h1>
             <div class="sort">
                 <p class="text_in_sort">Sort by the most expensive desk</p>
-                <button class="button_in_sort" id="sortButton">Sort</button>             
+                <button class="button_in_sort" id="sortButton">Sort</button>
             </div>
             <div class="dividing_line"></div>
             <p class="count">Count total daily expenses:</p>
@@ -34,16 +36,18 @@
                 <p class="total_text">Total expenses:</p>
                 <p class="total_price" id="totalPrice"></p>
             </div>
-        </menu>
 
+        </menu>
+        <div class="horizontal_line"></div>
         <div class="content">
-            <div class="horizontal_line"></div>
+
             <ul class="content_ul">
                 <li class="card">
                     <p id="name">Writing desk</p>
                     <p id="priceId">1600$</p>
+                    <button class='edit_button' id='editButton'>edit</button>
                 </li>
-                <li class="card">
+                <!--          <li class="card">
                     <p id="name">Coffee table</p>
                     <p id="priceId">1300$</p>
                 </li>
@@ -58,10 +62,35 @@
                 <li class="card">
                     <p id="name">Desk</p>
                     <p id="priceId">500$</p>
-                </li>
+                </li> -->
             </ul>
+        </div>
+        <div class="modal" id="createMenu">
+            <div class="modal_content" id="createMenuContent">
+                <h2>Create New Order</h2>
+                <form id="newOrderForm">
+                    <input type="text" id="itemName" placeholder="Item name">
+                    <input type="text" id="itemPrice" placeholder="Item price">
+
+                </form>
+                <button class="create_button" type="button" id="createButton">Create</button>
+                <button class="create_button" type="button" id="closeModal">Close</button>
+            </div>
+        </div>
+
+        <div class="modal_edit" id="editMenu">
+            <div class="modal_content_edit" id="editMenuContent">
+                <h2>Edit Order</h2>
+                <form id="newEditForm">
+                    <input type="text" id="editItemName" placeholder="Item name">
+                    <input type="text" id="editItemPrice" placeholder="Item price">
+                    <button type="button" id="edit" class="edit_button">Edit</button>
+                </form>
+                <button type="button" id="closeEditModal">Close</button>
+            </div>
         </div>
     </section>
     <script src="view_page.js"></script>
 </body>
+
 </html>
