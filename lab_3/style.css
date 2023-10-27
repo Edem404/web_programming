@@ -189,6 +189,11 @@ a {
 
 .edit_button {
     margin: 0 auto;
-    margin-top: 70%;
+    margin-top: 60%;
+    width: 100px;
+}
+
+.delete_button {
+    margin: 0 auto;
     width: 100px;
 }

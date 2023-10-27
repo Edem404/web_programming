@@ -4,7 +4,7 @@ let calculateButton = document.getElementById("countButton");
 var cards = document.querySelectorAll(".card");
 
 calculateButton.addEventListener("click", calculateTotalPrice);
-
+get_all_desks();
 function calculateTotalPrice() {
     let totalPrice = 0;
     priceElements.forEach(function (element) {
@@ -92,24 +92,21 @@ document.getElementById("closeModal").addEventListener("click", function () {
 
 let editMenu = document.getElementById("editMenu");
 
-document.getElementById("editButton").addEventListener("click", function () {
-    editMenu.style.display = "block";
-
-    var currentName = document.querySelector("#name").textContent;
-    var currentPrice = document.querySelector("#priceId").textContent;
-
-    // Отримайте інпути редагування за їх ID
-    var editItemNameInput = document.getElementById("editItemName");
-    var editItemPriceInput = document.getElementById("editItemPrice");
-
-    // Заповніть значеннями інпути редагування з поточної карточки
-    editItemNameInput.value = currentName;
-    editItemPriceInput.value = currentPrice.replace("$", "");
-});
-
 document.getElementById("closeEditModal").addEventListener("click", function () {
     editMenu.style.display = "none";
 });
+
+
+
+function getMaxId() {
+    return fetch("http://localhost:3000/maxid")
+        .then((response) => response.json())
+        .then((data) => data.maxId || 0)
+        .catch((error) => {
+            console.error("Помилка при отриманні максимального id: " + error);
+            return 0; // Повернути 0 у випадку помилки
+        });
+}
 
 document.getElementById("createButton").addEventListener("click", function () {
     var itemName = document.getElementById("itemName").value;
@@ -127,35 +124,82 @@ document.getElementById("createButton").addEventListener("click", function () {
             alert("negative price");
         }
         else {
+            const data = {
+                name: itemName,
+                price: parseInt(itemPrice),
+            };
+
+            fetch("http://localhost:3000/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((result) => {
+                    alert(result.message);
+                })
+                .catch((error) => {
+                    console.error("Помилка при відправці POST-запиту: " + error);
+                });
+
             var ul = document.querySelector(".content_ul");
-            let newCardIndex = cards.length + 1;
-            var li = document.createElement("li");
-            li.className = "card";
-            li.innerHTML = "<p id='name'>" + itemName + "</p><p id='priceId" + newCardIndex + "'>" + itemPrice + "$</p><button class='edit_button' id='editButton" + newCardIndex + "'>edit</button>";
-            ul.appendChild(li);
 
-            cards = document.querySelectorAll(".card");
-            priceElements = document.querySelectorAll("[id^='priceId']");
+            // Отримуємо найбільший id з бази даних
+            getMaxId()
+                .then((maxId) => {
+                    let newCardIndex = maxId + 1;
+                    console.log("Найбільший id в базі даних:", maxId);
 
-            var editButton = li.querySelector(".edit_button");
-            editButton.addEventListener("click", function () {
-                editMenu.style.display = "block";
-                editMenu.dataset.targetId = li.querySelector("[id^='priceId']").id;
-                var currentName = li.querySelector("#name").textContent;
-                var currentPrice = li.querySelector("[id^='priceId']").textContent;
+                    var li = document.createElement("li");
+                    li.className = "card";
+                    li.innerHTML = "<p id='name'>" + itemName + "</p><p id='priceId" + newCardIndex + "'>"
+                        + itemPrice + "$</p><button class='edit_button' id='editButton" + newCardIndex
+                        + "'>edit</button><button class='delete_button' id='deleteButton" + newCardIndex + "'>delete</button>";
+                    ul.appendChild(li);
 
-                // Отримайте інпути редагування за їх ID
-                var editItemNameInput = document.getElementById("editItemName");
-                var editItemPriceInput = document.getElementById("editItemPrice");
+                    cards = document.querySelectorAll(".card");
+                    priceElements = document.querySelectorAll("[id^='priceId']");
 
-                // Заповніть значеннями інпути редагування з поточної карточки
-                editItemNameInput.value = currentName;
-                editItemPriceInput.value = currentPrice.replace("$", "");
-            });
+                    var editButton = li.querySelector(".edit_button");
+                    editButton.addEventListener("click", function () {
+                        editMenu.style.display = "block";
+                        editMenu.dataset.targetId = li.querySelector("[id^='priceId']").id;
+                        var currentName = li.querySelector("#name").textContent;
+                        var currentPrice = li.querySelector("[id^='priceId']").textContent;
+
+                        var editItemNameInput = document.getElementById("editItemName");
+                        var editItemPriceInput = document.getElementById("editItemPrice");
+
+                        editItemNameInput.value = currentName;
+                        editItemPriceInput.value = currentPrice.replace("$", "");
+                    });
+
+                    var deleteButton = li.querySelector(".delete_button");
+                    deleteButton.addEventListener("click", function () {
+                        var parentLi = this.parentElement;
+
+                        // Отримуємо ідентифікатор об'єкта для видалення з атрибуту `data-target-id`
+                        var id = parentLi.querySelector("[id^='priceId']").id.replace("priceId", "");
+                        console.log(id);
+                        var deleteId = parseInt(id);
+                        // Видаляємо батьківський елемент (li), який містить об'єкт
+                        if (parentLi) {
+                            fetch(`http://localhost:3000/delete/${deleteId}`, {
+                                method: 'DELETE'
+                            })
+                                .then(response => response.json())
+                                .then(result => {
+                                    parentLi.remove();
+                                })
+                        }
+
+                        cards = document.querySelectorAll(".card");
+                        priceElements = document.querySelectorAll("[id^='priceId']");
+                    });
+                });
         }
-
-
-        // createMenu.style.display = "none";
 
         calculateTotalPrice();
     }
@@ -172,8 +216,10 @@ document.getElementById("edit").addEventListener("click", function () {
     if (editItemName && editItemPrice) {
         var targetId = editMenu.dataset.targetId;
         var targetPriceElement = document.getElementById(targetId);
-
-
+        console.log(targetId);
+        console.log(targetPriceElement);
+        var numericPart = targetId.replace("priceId", "");
+        console.log("parse ", parseInt(numericPart));
         let intPrice = parseInt(editItemPrice);
 
         if (/[^0-9]/.test(editItemPrice)) {
@@ -194,11 +240,96 @@ document.getElementById("edit").addEventListener("click", function () {
                 targetPriceElement.textContent = editItemPrice + "$";
             }
 
+            const updateData = {
+                id: parseInt(numericPart),
+                newName: editItemName,
+                newPrice: editItemPrice
+            };
+
+            fetch('http://localhost:3000/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    alert('Обєкт оновлена в базі даних.');
+                })
+                .catch(error => {
+                    console.error('Помилка оновлення:', error);
+                });
+
             calculateTotalPrice();
             editMenu.style.display = "none";
         }
-
-
-        
     }
 });
+
+function get_all_desks() {
+    fetch("http://localhost:3000/read")
+        .then((response) => response.json())
+        .then((data) => {
+
+            data.data.forEach(element => {
+                var ul = document.querySelector(".content_ul");
+                let newCardIndex = element.id;
+                var li = document.createElement("li");
+                li.className = "card";
+                li.innerHTML = "<p id='name'>" + element.name + "</p><p id='priceId" + newCardIndex + "'>"
+                    + parseInt(element.price) + "$</p><button class='edit_button' id='editButton"
+                    + newCardIndex + "'>edit</button><button class='delete_button' id='deleteButton" + newCardIndex + "'>delete</button>";
+                ul.appendChild(li);
+
+                cards = document.querySelectorAll(".card");
+                priceElements = document.querySelectorAll("[id^='priceId']");
+
+                var editButton = li.querySelector(".edit_button");
+                editButton.addEventListener("click", function () {
+                    editMenu.style.display = "block";
+                    editMenu.dataset.targetId = li.querySelector("[id^='priceId']").id;
+                    var currentName = li.querySelector("#name").textContent;
+                    var currentPrice = li.querySelector("[id^='priceId']").textContent;
+
+                    var editItemNameInput = document.getElementById("editItemName");
+                    var editItemPriceInput = document.getElementById("editItemPrice");
+
+                    editItemNameInput.value = currentName;
+                    editItemPriceInput.value = currentPrice.replace("$", "");
+                });
+
+                var deleteButton = li.querySelector(".delete_button");
+                deleteButton.addEventListener("click", function () {
+                    var parentLi = this.parentElement;
+
+                    // Отримуємо ідентифікатор об'єкта для видалення з атрибуту `data-target-id`
+                    var id = parentLi.querySelector("[id^='priceId']").id.replace("priceId", "");
+                    console.log(id);
+                    var deleteId = parseInt(id);
+                    // Видаляємо батьківський елемент (li), який містить об'єкт
+                    if (parentLi) {
+                        fetch(`http://localhost:3000/delete/${deleteId}`, {
+                            method: 'DELETE'
+                        })
+                            .then(response => response.json())
+                            .then(result => {
+                                // if (result.message === 'Deleted') {
+                                parentLi.remove();
+                                // } else {
+                                //     alert('delete error');
+                                // }
+                            })
+                        // .catch(error => {
+                        //     console.error('delete error:', error);
+                        // });
+                    }
+                    cards = document.querySelectorAll(".card");
+                    priceElements = document.querySelectorAll("[id^='priceId']");
+                });
+            });
+        })
+        .catch((error) => {
+            console.error("Помилка при отриманні даних: " + error);
+        });
+}
