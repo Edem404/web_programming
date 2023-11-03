@@ -1,25 +1,12 @@
 import React from "react";
-import { HomeStyle, HeadingWrapper, HeadingContentWrapper, CardWrapper, ViewWrapper} from "./home.styled";
+import { HomeStyle, HeadingWrapper, HeadingContentWrapper} from "./home.styled";
+import ViewButton from "./ViewButton/viewbutton";
 import photo from "../icons/heading_desk.jpg";
 import photo1 from "../icons/photo1.jpg";
 import photo2 from "../icons/photo2.jpg";
 import photo3 from "../icons/photo3.jpg";
-
-import { Card } from "antd";
-
-
-const { Meta } = Card;
-
-const CardItem = ({ title='No title', description, imageSrc,}) => (
-    <Card
-        style={{ width: 300, borderRadius: "20px", marginRight: "60px", marginLeft: "60px" }}
-        cover={
-            <img style={{ borderRadius: "20px", height: "261px" }} alt="example" src={imageSrc} />
-        }
-    >
-        <Meta title={title} description={description} />
-    </Card>
-);
+import CardItem from "../card/item";
+import { CardWrapper } from "../card/item.styled";
 
 const dataCard = [
     {
@@ -42,6 +29,12 @@ const dataCard = [
     },
 ];
 
+const header_description = {
+    title: "Desk is POWER!",
+    description: "Tables are versatile pieces of furniture that can serve multiple purposes in a home or workspace. They can be used as dining tables, workstations, or even decorative pieces." +
+    "Whether used for a family meal, a business meeting, or simply as a focal point in a room, tables are a functional and aesthetically pleasing addition to any living or working space."
+}
+
 const Home = () => {
     return (
         <HomeStyle>
@@ -49,11 +42,10 @@ const Home = () => {
                 <img src={photo} alt="wtf" className="headingPhoto" />
                 <HeadingContentWrapper>
                     <h1>
-                        Desk is POWER!
+                        {header_description.title}
                     </h1>
                     <p>
-                        Tables are versatile pieces of furniture that can serve multiple purposes in a home or workspace. They can be used as dining tables, workstations, or even decorative pieces.
-                        Whether used for a family meal, a business meeting, or simply as a focal point in a room, tables are a functional and aesthetically pleasing addition to any living or working space.
+                        {header_description.description}
                     </p>
                 </HeadingContentWrapper>
             </HeadingWrapper>
@@ -68,9 +60,7 @@ const Home = () => {
                 ))}
             </CardWrapper>
             
-            <ViewWrapper>
-                <a href="#">View More</a>
-            </ViewWrapper>
+            <ViewButton/>
         </HomeStyle>
     );
 }
