@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
                 <SocialIcons>
 
-                    <SocialIconWrapper href="#">
+                    <SocialIconWrapper href="https://www.youtube.com" target="_blank">
                         <YoutubeOutlined style={{color: "red"}}/>
                     </SocialIconWrapper>
                         

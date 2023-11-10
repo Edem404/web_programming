@@ -11,20 +11,20 @@ import { CardWrapper } from "../card/item.styled";
 const dataCard = [
     {
         title: "Computer Desk",
-        description: "A computer desk is a specialized piece of furniture designed to provide a suitable and organized workspace for computer use. " +
+        description: "A computer desk is a specialized piece of furniture " +
                         "It is an essential piece of furniture for home offices, workstations, or any place where a computer is regularly used. ",
         image: photo1,
     },
     {
         title: "Coffee Table",
         description: "A coffee table is a low-sitting table typically placed in a living room or a seating area." +  
-                    "It's designed to serve a variety of purposes and is often located in the center of the room, within easy reach of sofas and chairs. ",
+                    "It's designed to serve a variety of purposes",
         image: photo2,
     },
     {
         title: "Writing Desk",
         description: "A writing desk is a piece of furniture designed for reading, writing, or other similar activities." +  
-        "It is often smaller and more compact than a traditional office desk, and it is primarily intended to provide a dedicated space for writing and working on paper-based tasks.",
+        "It is often smaller and more compact than a traditional office desk",
         image: photo3,
     },
 ];
