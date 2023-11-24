@@ -8,7 +8,7 @@ import photo2 from "../icons/photo2.jpg";
 import photo3 from "../icons/photo3.jpg";
 import CardItem from "../card/item";
 import { CardWrapper } from "../card/item.styled";
-import { dataCardCatalog } from "../catalog/catalog";
+// import { dataCardCatalog } from "../catalog/catalog";
 
 const header_description = {
     title: "Desk is POWER!",
@@ -23,7 +23,20 @@ const Home = () => {
         setVisibleCardCount(visibleCardCount + 3); // Збільшення кількості видимих карток при кожному кліку
     };
 
-    // const [dataCardCatalog, setDataCardCatalog] = useState([]);
+    const [dataCardCatalog, setDataCardCatalog] = useState([]);
+
+    useEffect(() => {
+        // Отримання даних з сервера при завантаженні компоненту
+        axios.get('http://localhost:3001/read')
+            .then(response => {
+                setDataCardCatalog(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+
 
     return (
         <HomeStyle>
@@ -39,12 +52,12 @@ const Home = () => {
                 </HeadingContentWrapper>
             </HeadingWrapper>
             <CardWrapper>
-                {dataCardCatalog.slice(0, visibleCardCount).map(({ title, description, category, image }, idx) => (
+                {dataCardCatalog.slice(0, visibleCardCount).map(({ title, description, category }, idx) => (
                     <CardItem
                         key={idx}
                         title={title}
                         description={description}
-                        imageSrc={image}
+                        imageSrc={photo2}
                         id={idx}
                     />
                 ))}
