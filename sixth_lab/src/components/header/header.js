@@ -14,7 +14,7 @@ const Header = () => {
             <p>Desk Shop</p>
             <Nav>
                 <ul>
-                <li><Link to="/" className={location.pathname === '/' ? 'homePage currentPage' : 'homePage'}>Home</Link></li>
+                    <li><Link to="/" className={location.pathname === '/' ? 'homePage currentPage' : 'homePage'}>Home</Link></li>
                     <li><Link to="/catalog" className={location.pathname === '/catalog' ? 'currentPage' : ''}>Catalog</Link></li>
                     <li><Link to="/cart" className={location.pathname === '/cart' ? 'currentPage' : ''}>Cart</Link></li>
                 </ul>

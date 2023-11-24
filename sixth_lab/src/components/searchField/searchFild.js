@@ -1,11 +1,12 @@
 import React from "react";
 import { InputWrapper, InputFild } from "./searchFild.styled";
-const SearchInput = () => {
-    return (
-        <InputWrapper>
-            <InputFild  type="text" placeholder="Search..."></InputFild>
-        </InputWrapper>
-    );
+
+const SearchInput = ({ onChange }) => {
+  return (
+    <InputWrapper>
+      <InputFild type="text" placeholder="Search..." onChange={onChange} />
+    </InputWrapper>
+  );
 };
 
-export default SearchInput
+export default SearchInput;

@@ -3,31 +3,36 @@ import { CategoryWrapper, SelectCategory } from "./category.styled";
 
 const optionList = [
     {
-        optionContent: "All"
+        optionContent: "All",
     },
     {
-        optionContent: "Coffee"
+        optionContent: "Coffee",
     },
     {
-        optionContent: "Computer"
+        optionContent: "Computer",
     },
     {
-        optionContent: "Writing"
+        optionContent: "Writing",
     },
     {
-        optionContent: "Rozkladushka"
+        optionContent: "Rozkladushka",
     },
-]
-const SelectCategoryComponent = () => {
+];
+
+const SelectCategoryComponent = ({ onChange }) => {
+    const handleCategoryChange = (event) => {
+        onChange(event.target.value);
+    };
+
     return (
         <CategoryWrapper>
-            <SelectCategory>
-            {optionList.map(({ optionContent }, idx) => (
-                    <option>{optionContent}</option>
+            <SelectCategory onChange={handleCategoryChange}>
+                {optionList.map(({ optionContent }, idx) => (
+                    <option key={idx}>{optionContent}</option>
                 ))}
             </SelectCategory>
         </CategoryWrapper>
     );
 };
 
-export default SelectCategoryComponent
+export default SelectCategoryComponent;

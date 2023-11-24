@@ -3,7 +3,7 @@ import { Confirm } from "./filterConfirm.styled";
 
 const ConfirmFilter = () => {
     return (
-        <Confirm href="/catalog">Confirm</Confirm>
+        <Confirm href="/catalog">Reset</Confirm>
     );
 };
 

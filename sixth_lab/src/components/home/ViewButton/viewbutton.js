@@ -1,10 +1,12 @@
 import React from "react";
 import { ViewWrapper } from "./viewbutton.styled";
 
-const ViewButton = () => {
+const ViewButton = ({ onClick }) => {
     return (
         <ViewWrapper>
-            <a href='/'>View More</a>
+            <a href='/' onClick={(e) => { e.preventDefault(); onClick(); }}>
+                View More
+            </a>
         </ViewWrapper>
     );
 }

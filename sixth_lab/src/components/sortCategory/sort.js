@@ -3,26 +3,30 @@ import { SortWrapper, SortSelect } from "./sort.styled";
 
 const optionList = [
     {
-        optionContent: "None"
+        optionContent: "None",
     },
     {
-        optionContent: "Cheap"
+        optionContent: "Cheap",
     },
     {
-        optionContent: "Expensive"
+        optionContent: "Expensive",
     },
 ];
 
-const SortCategoryComponent = () => {
+const SortCategoryComponent = ({ onChange }) => {
+    const handleSortChange = (event) => {
+        onChange(event.target.value);
+    };
+
     return (
         <SortWrapper>
-            <SortSelect>
+            <SortSelect onChange={handleSortChange}>
                 {optionList.map(({ optionContent }, idx) => (
-                    <option>{optionContent}</option>
+                    <option key={idx} value={optionContent}>{optionContent}</option>
                 ))}
-            </SortSelect>      
+            </SortSelect>
         </SortWrapper>
     );
 };
 
-export default SortCategoryComponent
+export default SortCategoryComponent;
