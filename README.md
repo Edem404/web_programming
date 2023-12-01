@@ -38,3 +38,7 @@
 Посилання на вітку [тут](https://github.com/Edem404/web_programming/tree/lab_9)
 
 ***
+### Лабораторна робота №10 (Варіант 10)
+Посилання на вітку [тут](https://github.com/Edem404/web_programming/tree/lab_10)
+
+***
