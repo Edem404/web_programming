@@ -83,3 +83,33 @@ export const AddToCart = styled.a`
     font-size: large;
     padding-top: 16px;
 `;
+
+export const InputCountWrapper = styled.div`
+    margin-left: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+`;
+
+export const InputCount = styled.input`
+    border: solid 3px #8b1ec4;
+    border-radius: 30px;
+    height: 25px;
+    width: 150px;
+`;
+
+export const ContinueModalText = styled.p`
+    color: #8b1ec4;
+    margin-left: 100px;
+    font-size: 20px;
+`;
+
+export const ModalTitle = styled.h2`
+    color: #8b1ec4;
+    margin-left: 210px;
+`;
+
+export const ModalLine = styled.div`
+    background-color: darkviolet;
+    width: 100%;
+    height: 3px;
+`;

@@ -29,7 +29,7 @@ const Home = () => {
         // Отримання даних з сервера при завантаженні компоненту
         axios.get('http://localhost:3001/read')
             .then(response => {
-                setDataCardCatalog(response.data);
+                setDataCardCatalog(response.data.data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);

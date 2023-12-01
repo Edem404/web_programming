@@ -6,6 +6,7 @@ import Footer from './components/footer/footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Catalog from './components/catalog/catalog';
 import AboutCard from './components/aboutCard/aboutCard';
+import Cart from './components/cart/cart';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/catalog" element={<Catalog/>} />
             <Route path="/catalog/:id" element={<AboutCard/>}/>
+            <Route path="/cart" element={<Cart/>}/>
           </Routes>
         <Footer />
       </div>
